@@ -63,7 +63,7 @@
             this.btnAnBiLiSuoXiao.Name = "btnAnBiLiSuoXiao";
             this.btnAnBiLiSuoXiao.Size = new System.Drawing.Size(75, 23);
             this.btnAnBiLiSuoXiao.TabIndex = 5;
-            this.btnAnBiLiSuoXiao.Text = "按比例缩小";
+            this.btnAnBiLiSuoXiao.Text = "按比例压缩";
             this.btnAnBiLiSuoXiao.UseVisualStyleBackColor = true;
             this.btnAnBiLiSuoXiao.Click += new System.EventHandler(this.btnAnBiLiSuoXiao_Click);
             // 
