@@ -39,10 +39,16 @@ namespace WinForGIFSicle
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] paths = e.Data.GetData(DataFormats.FileDrop) as string[];
+                StringBuilder sb = new StringBuilder();
+                foreach (var psthStr in paths)
+                {
+                    sb.Append(psthStr + "\r\n");
+                }
+                txtFilePath.Text = sb.ToString();
                 //得到拖进来的路径,取第一个文件
                 string path = paths[0];
                 //Clipboard.SetText(path);
-                txtFilePath.Text = path;
+                //txtFilePath.Text = path;
                 //string fileName = txtFilePath.Text.Substring(txtFilePath.Text.LastIndexOf('\\') + 1);
                 //路径字符串长度不为空
                 if (path.Length > 1)
@@ -85,32 +91,42 @@ namespace WinForGIFSicle
 
         private void btnAnBiLiSuoXiao_Click(object sender, EventArgs e)
         {
-            if (!(!string.IsNullOrEmpty(txtFilePath.Text) && File.Exists(txtFilePath.Text)))
+            if (!(!string.IsNullOrEmpty(txtFilePath.Text)))
             { MessageBox.Show("请选择文件！"); }
             //gifsicle.exe 0.gif --scale 0.8 -o small.gif
-            string filePath = txtFilePath.Text;
-            int biLi = int.Parse(txtBiLi.Text);
-            string str = "gifsicle.exe " + txtFilePath.Text + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o "+ txtFilePath.Text.Insert(txtFilePath.Text.Length - 5, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            if (radioButton2.Checked)
+            string[] filePathArr = txtFilePath.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var filePath in filePathArr)
             {
-                str = "gifsicle.exe " + txtFilePath.Text + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(txtFilePath.Text).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
+                if (string.IsNullOrEmpty(filePath)) continue;
+                //string filePath = txtFilePath.Text;
+                int biLi = int.Parse(txtBiLi.Text);
+                string str = "gifsicle.exe " + filePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + filePath.Insert(filePath.Length - 5, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                if (radioButton2.Checked)
+                {
+                    str = "gifsicle.exe " + filePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(filePath).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
+                }
+                CMD(str);
             }
-            CMD(str);
         }
 
         private void btnYaSuo_Click(object sender, EventArgs e)
         {
-            if (!(!string.IsNullOrEmpty(txtFilePath.Text) && File.Exists(txtFilePath.Text)))
+            if (!(!string.IsNullOrEmpty(txtFilePath.Text)))
             { MessageBox.Show("请选择文件！"); }
             //Directory.GetFiles(
             //gifsicle -O3 0.gif -o new.gif
             //string fileName = txtFilePath.Text.Substring(txtFilePath.Text.LastIndexOf('\\') + 1);
-            string str = "gifsicle.exe -O3 " + txtFilePath.Text + " -o " + txtFilePath.Text.Insert(txtFilePath.Text.Length - 5, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            if (radioButton2.Checked)
+            string[] filePathArr = txtFilePath.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var filePath in filePathArr)
             {
-                str = "gifsicle.exe -O3 " + txtFilePath.Text + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(txtFilePath.Text).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
+                //string filePath = txtFilePath.Text;
+                string str = "gifsicle.exe -O3 " + filePath + " -o " + filePath.Insert(filePath.Length - 5, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                if (radioButton2.Checked)
+                {
+                    str = "gifsicle.exe -O3 " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(filePath).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
+                }
+                CMD(str);
             }
-            CMD(str);
         }
 
         string CMD(string mingLing)
@@ -159,6 +175,12 @@ namespace WinForGIFSicle
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnClearTxt_Click(object sender, EventArgs e)
+        {
+            txtFilePath.Clear();
+            txtFilePath.ClearUndo();
         }
     }
 }
