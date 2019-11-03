@@ -182,5 +182,30 @@ namespace WinForGIFSicle
             txtFilePath.Clear();
             txtFilePath.ClearUndo();
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            txtLossy.Text = trackBar1.Value.ToString();
+        }
+
+        private void btnLossy_Click(object sender, EventArgs e)
+        {
+            if (!(!string.IsNullOrEmpty(txtFilePath.Text)))
+            { MessageBox.Show("请选择文件！"); }
+            //Directory.GetFiles(
+            //gifsicle -O3 0.gif -o new.gif
+            //string fileName = txtFilePath.Text.Substring(txtFilePath.Text.LastIndexOf('\\') + 1);
+            string[] filePathArr = txtFilePath.Text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var filePath in filePathArr)
+            {
+                //string filePath = txtFilePath.Text;
+                string str = "gifsicle.exe -O3 --lossy=80 " + filePath + " -o " + filePath.Insert(filePath.Length - 5, DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+                if (radioButton2.Checked)
+                {
+                    str = "gifsicle.exe -O3 --lossy=80 " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(filePath).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
+                }
+                CMD(str);
+            }
+        }
     }
 }
