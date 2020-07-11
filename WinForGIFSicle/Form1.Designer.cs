@@ -47,6 +47,11 @@
             this.btnLossy = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.btnSelectPath = new System.Windows.Forms.Button();
+            this.txtSelectPath = new System.Windows.Forms.TextBox();
+            this.cbFileNameChange = new System.Windows.Forms.CheckBox();
+            this.cbFileNameNoChange = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +79,7 @@
             // 
             // btnAnBiLiSuoXiao
             // 
-            this.btnAnBiLiSuoXiao.Location = new System.Drawing.Point(98, 270);
+            this.btnAnBiLiSuoXiao.Location = new System.Drawing.Point(98, 308);
             this.btnAnBiLiSuoXiao.Name = "btnAnBiLiSuoXiao";
             this.btnAnBiLiSuoXiao.Size = new System.Drawing.Size(90, 23);
             this.btnAnBiLiSuoXiao.TabIndex = 5;
@@ -84,7 +89,7 @@
             // 
             // btnYaSuo
             // 
-            this.btnYaSuo.Location = new System.Drawing.Point(96, 315);
+            this.btnYaSuo.Location = new System.Drawing.Point(96, 353);
             this.btnYaSuo.Name = "btnYaSuo";
             this.btnYaSuo.Size = new System.Drawing.Size(90, 23);
             this.btnYaSuo.TabIndex = 6;
@@ -95,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 275);
+            this.label1.Location = new System.Drawing.Point(13, 313);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 7;
@@ -103,7 +108,7 @@
             // 
             // txtBiLi
             // 
-            this.txtBiLi.Location = new System.Drawing.Point(48, 272);
+            this.txtBiLi.Location = new System.Drawing.Point(48, 310);
             this.txtBiLi.Name = "txtBiLi";
             this.txtBiLi.Size = new System.Drawing.Size(27, 21);
             this.txtBiLi.TabIndex = 8;
@@ -114,7 +119,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(81, 275);
+            this.label2.Location = new System.Drawing.Point(81, 313);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(11, 12);
             this.label2.TabIndex = 9;
@@ -173,7 +178,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(383, 270);
+            this.trackBar1.Location = new System.Drawing.Point(383, 308);
             this.trackBar1.Maximum = 200;
             this.trackBar1.Minimum = 5;
             this.trackBar1.Name = "trackBar1";
@@ -185,7 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(257, 275);
+            this.label5.Location = new System.Drawing.Point(257, 313);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 12);
             this.label5.TabIndex = 16;
@@ -193,7 +198,7 @@
             // 
             // txtLossy
             // 
-            this.txtLossy.Location = new System.Drawing.Point(322, 272);
+            this.txtLossy.Location = new System.Drawing.Point(322, 310);
             this.txtLossy.Name = "txtLossy";
             this.txtLossy.Size = new System.Drawing.Size(53, 21);
             this.txtLossy.TabIndex = 17;
@@ -202,14 +207,14 @@
             // label6
             // 
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(12, 303);
+            this.label6.Location = new System.Drawing.Point(12, 341);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(224, 2);
             this.label6.TabIndex = 18;
             // 
             // btnLossy
             // 
-            this.btnLossy.Location = new System.Drawing.Point(383, 315);
+            this.btnLossy.Location = new System.Drawing.Point(383, 353);
             this.btnLossy.Name = "btnLossy";
             this.btnLossy.Size = new System.Drawing.Size(75, 23);
             this.btnLossy.TabIndex = 19;
@@ -220,7 +225,7 @@
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(236, 265);
+            this.label7.Location = new System.Drawing.Point(236, 303);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(2, 82);
             this.label7.TabIndex = 20;
@@ -228,10 +233,62 @@
             // label8
             // 
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(14, 263);
+            this.label8.Location = new System.Drawing.Point(14, 301);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(520, 2);
             this.label8.TabIndex = 21;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(177, 239);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(71, 16);
+            this.radioButton3.TabIndex = 22;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "自选目录";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectPath
+            // 
+            this.btnSelectPath.Location = new System.Drawing.Point(466, 237);
+            this.btnSelectPath.Name = "btnSelectPath";
+            this.btnSelectPath.Size = new System.Drawing.Size(37, 23);
+            this.btnSelectPath.TabIndex = 23;
+            this.btnSelectPath.Text = "...";
+            this.btnSelectPath.UseVisualStyleBackColor = true;
+            this.btnSelectPath.Click += new System.EventHandler(this.btnSelectPath_Click);
+            // 
+            // txtSelectPath
+            // 
+            this.txtSelectPath.Location = new System.Drawing.Point(254, 238);
+            this.txtSelectPath.Name = "txtSelectPath";
+            this.txtSelectPath.Size = new System.Drawing.Size(213, 21);
+            this.txtSelectPath.TabIndex = 24;
+            // 
+            // cbFileNameChange
+            // 
+            this.cbFileNameChange.AutoSize = true;
+            this.cbFileNameChange.Checked = true;
+            this.cbFileNameChange.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbFileNameChange.Location = new System.Drawing.Point(59, 268);
+            this.cbFileNameChange.Name = "cbFileNameChange";
+            this.cbFileNameChange.Size = new System.Drawing.Size(168, 16);
+            this.cbFileNameChange.TabIndex = 25;
+            this.cbFileNameChange.Text = "保存的文件名添加时间信息";
+            this.cbFileNameChange.UseVisualStyleBackColor = true;
+            this.cbFileNameChange.CheckedChanged += new System.EventHandler(this.cbFileNameChange_CheckedChanged);
+            // 
+            // cbFileNameNoChange
+            // 
+            this.cbFileNameNoChange.AutoSize = true;
+            this.cbFileNameNoChange.Location = new System.Drawing.Point(233, 268);
+            this.cbFileNameNoChange.Name = "cbFileNameNoChange";
+            this.cbFileNameNoChange.Size = new System.Drawing.Size(168, 16);
+            this.cbFileNameNoChange.TabIndex = 26;
+            this.cbFileNameNoChange.Text = "保存文件名不添加时间信息";
+            this.cbFileNameNoChange.UseVisualStyleBackColor = true;
+            this.cbFileNameNoChange.CheckedChanged += new System.EventHandler(this.cbFileNameNoChange_CheckedChanged);
             // 
             // Form1
             // 
@@ -239,6 +296,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 448);
+            this.Controls.Add(this.cbFileNameNoChange);
+            this.Controls.Add(this.cbFileNameChange);
+            this.Controls.Add(this.txtSelectPath);
+            this.Controls.Add(this.btnSelectPath);
+            this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnLossy);
@@ -289,6 +351,11 @@
         private System.Windows.Forms.Button btnLossy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Button btnSelectPath;
+        private System.Windows.Forms.TextBox txtSelectPath;
+        private System.Windows.Forms.CheckBox cbFileNameChange;
+        private System.Windows.Forms.CheckBox cbFileNameNoChange;
     }
 }
 
