@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -118,17 +118,19 @@ namespace WinForGIFSicle
                 //string filePath = txtFilePath.Text;
                 int biLi = int.Parse(txtBiLi.Text);
                 string str = "";
+                string safeFilePath = CheckSafePath(filePath);
+                savaFilePath = CheckSafePath(savaFilePath);
                 if (radioButton1.Checked)
                 {
-                    str = "gifsicle.exe " + filePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + savaFilePath;
+                    str = "gifsicle.exe " + safeFilePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + savaFilePath;
                 }
                 else if (radioButton2.Checked)
                 {
-                    str = "gifsicle.exe " + filePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
+                    str = "gifsicle.exe " + safeFilePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
                 }
                 else
                 {
-                    str = "gifsicle.exe " + filePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + txtSelectPath.Text + @"/" + savaFileName;
+                    str = "gifsicle.exe " + safeFilePath + " --scale " + ((double)biLi / (double)100).ToString("0.00") + " -o " + txtSelectPath.Text + @"/" + savaFileName;
                 }
                 CMD(str);
             }
@@ -167,18 +169,20 @@ namespace WinForGIFSicle
                 //{
                 //    str = "gifsicle.exe -O3 " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(filePath).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
                 //}
+                string safeFilePath = CheckSafePath(filePath);
+                savaFilePath = CheckSafePath(savaFilePath);
                 string str = "";
                 if (radioButton1.Checked)
                 {
-                    str = "gifsicle.exe -O3 " + filePath + " -o " + savaFilePath;
+                    str = "gifsicle.exe -O3 " + safeFilePath + " -o " + savaFilePath;
                 }
                 else if (radioButton2.Checked)
                 {
-                    str = "gifsicle.exe -O3 " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
+                    str = "gifsicle.exe -O3 " + safeFilePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
                 }
                 else
                 {
-                    str = "gifsicle.exe -O3 " + filePath + " -o " + txtSelectPath.Text + @"/" + savaFileName;
+                    str = "gifsicle.exe -O3 " + safeFilePath + " -o " + txtSelectPath.Text + @"/" + savaFileName;
                 }
                 CMD(str);
             }
@@ -276,18 +280,20 @@ namespace WinForGIFSicle
                 //{
                 //    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + Path.GetFileName(filePath).Replace(".", DateTime.Now.ToString("yyMMddHHmmssfff") + ".");
                 //}
+                string safeFilePath = CheckSafePath(filePath);
+                savaFilePath = CheckSafePath(savaFilePath);
                 string str = "";
                 if (radioButton1.Checked)
                 {
-                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + filePath + " -o " + savaFilePath;
+                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + safeFilePath + " -o " + savaFilePath;
                 }
                 else if (radioButton2.Checked)
                 {
-                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + filePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
+                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + safeFilePath + " -o " + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"/" + savaFileName;
                 }
                 else
                 {
-                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + filePath + " -o " + txtSelectPath.Text + @"/" + savaFileName;
+                    str = "gifsicle.exe -O3 --lossy=" + txtLossy.Text + " " + safeFilePath + " -o " + txtSelectPath.Text + @"/" + savaFileName;
                 }
                 CMD(str);
             }
@@ -314,6 +320,15 @@ namespace WinForGIFSicle
         private void cbFileNameNoChange_CheckedChanged(object sender, EventArgs e)
         {
             cbFileNameChange.Checked = !cbFileNameNoChange.Checked;
+        }
+
+        public string CheckSafePath(string strPath)
+        {
+            if (strPath.IndexOf(" ") > -1)
+            {
+                return $"\"{strPath}\"";
+            }
+            return strPath;
         }
     }
 }
