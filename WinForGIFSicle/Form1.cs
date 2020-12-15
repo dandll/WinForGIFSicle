@@ -321,7 +321,11 @@ namespace WinForGIFSicle
         {
             cbFileNameChange.Checked = !cbFileNameNoChange.Checked;
         }
-
+        /// <summary>
+        /// 防止路径中间有空格导致不能正常使用
+        /// </summary>
+        /// <param name="strPath"></param>
+        /// <returns></returns>
         public string CheckSafePath(string strPath)
         {
             if (strPath.IndexOf(" ") > -1)
